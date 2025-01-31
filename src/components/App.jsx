@@ -29,8 +29,7 @@ function App() {
           <a href="https://thecatapi.com/">obtain one</a> to play the harder
           level of the game. (
           <em>
-            another perk: the photos will be of a single breed and much nicer
-            than the easy level!
+            another perk: the photos will much nicer than the easy level!
           </em>
           )
         </p>
