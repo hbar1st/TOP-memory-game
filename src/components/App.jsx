@@ -78,7 +78,14 @@ function App() {
   } else {
     // harder level
     console.log("play hard");
-    return <HardGame apiKey={apiKey} />;
+    return (
+      <HardGame
+        apiKey={apiKey}
+        setPlayLevel={setPlayLevel}
+        bestScore={bestScore}
+        setBestScore={setBestScore}
+      />
+    );
   }
 }
 export default App;

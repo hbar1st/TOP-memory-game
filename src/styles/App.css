@@ -74,6 +74,10 @@ a:hover {
       flex: 1;
     }
   }
+  button:active > img {
+    filter: brightness(1.75);
+    transform: translateY(4px);
+  }
 }
 
 .cat-display.end {
