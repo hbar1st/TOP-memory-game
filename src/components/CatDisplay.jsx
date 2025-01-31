@@ -22,7 +22,9 @@ function CatDisplay({
       // if incremented score is 10, they have won and the game ends
       if (selectedPics.includes(e.target.id)) {
         setStatus("end");
-        setEndMessage("game ends, you lost");
+        setEndMessage(
+          "Uh-oh! The End! You clicked twice on one of the pictures!"
+        );
       } else {
         setScore(score + 1);
         if (bestScore < score + 1) {
@@ -30,9 +32,11 @@ function CatDisplay({
         }
         let newArr = [...selectedPics];
         newArr.push(e.target.id);
-        if (newArr.length === 10) {
+        if (newArr.length === shuffledData.length) {
           setStatus("end");
-          setEndMessage("game ends, you won");
+          setEndMessage(
+            "Wow! You're amazing at this! You remembered everything you clicked on!"
+          );
         } else {
           setSelectedPics(newArr); //update list of selected ids
           //shuffle
@@ -44,7 +48,6 @@ function CatDisplay({
               newShuffledArr.push(shuffledData[rand]);
               shuffler.push(rand);
             }
-            console.log("newShuffledArr ->", newShuffledArr);
           } while (newShuffledArr.length !== shuffledData.length);
           setShuffledData(newShuffledArr);
         }
