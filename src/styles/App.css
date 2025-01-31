@@ -58,19 +58,55 @@ a:hover {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 7px;
+  gap: 10px;
 
   button {
     padding: 1px;
-    flex: 1;
+
+    border: 2px solid white;
     display: flex;
     img {
       margin: auto auto;
       aspect-ratio: 2/3;
       max-width: 200px;
-      min-width: 100px;
+      min-width: 150px;
       width: calc(calc(100% - 35px) / 5);
       flex: 1;
     }
   }
+}
+
+.cat-display.end {
+  img {
+    filter: grayscale(80%);
+  }
+}
+
+dl {
+  display: flex;
+  flex-direction: row;
+  border: 2px double #c89e9e;
+  width: 50%;
+  justify-content: center;
+  align-items: center;
+  margin: 5px auto;
+
+  dt {
+    padding: 3px;
+    align-self: center;
+    text-align: center;
+  }
+  dd {
+    border: 1px dashed white;
+    padding: 3px;
+    flex: 1;
+  }
+}
+
+#play-again.show {
+  display: block;
+  margin: auto auto;
+}
+#play-again.hide {
+  display: none;
 }

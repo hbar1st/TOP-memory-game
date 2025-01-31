@@ -2,9 +2,12 @@ import { useState } from "react";
 import "../styles/App.css";
 import { scrubAPIKey, looksLikeAKey } from "../utilities.js";
 import { EasyGame } from "./EasyGame.jsx";
+import { HardGame } from "./HardGame.jsx";
+
 function App() {
   const [apiKey, setApiKey] = useState("");
   const [playLevel, setPlayLevel] = useState(0); // 1 is easiest level, 2 is hardest and needs api key
+  const [bestScore, setBestScore] = useState(0);
 
   if (playLevel === 0) {
     return (
@@ -32,7 +35,7 @@ function App() {
           )
         </p>
         <form>
-          <button onClick={() => setPlayLevel(1)}>Play now!</button>
+          <button onClick={() => setPlayLevel(1)}>Play Now!</button>
           <fieldset>
             <legend>Enter your API key to play harder level</legend>
             <label htmlFor="api-key">
@@ -46,7 +49,9 @@ function App() {
             </label>
             <button
               onClick={(e) => {
-                let scrubbedKey = scrubAPIKey(e.target.value);
+                console.log({ apiKey });
+                let scrubbedKey = scrubAPIKey(apiKey);
+                console.log({ scrubbedKey });
                 if (looksLikeAKey(scrubbedKey)) {
                   setPlayLevel(2);
                 } else {
@@ -63,10 +68,17 @@ function App() {
   } else if (playLevel === 1) {
     // easy level
     console.log("play easy");
-    return <EasyGame />;
+    return (
+      <EasyGame
+        setPlayLevel={setPlayLevel}
+        bestScore={bestScore}
+        setBestScore={setBestScore}
+      />
+    );
   } else {
     // harder level
     console.log("play hard");
+    return <HardGame apiKey={apiKey} />;
   }
 }
 export default App;
